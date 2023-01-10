@@ -16,19 +16,19 @@ const Register = () => {
                     <h1 className="h3 mb-3 fw-normal">Please register</h1>
                     <Input
                         label={"User name"}
-                        bId={"floatingUser"}
+                        bootstrapId={"floatingUser"}
                         state={name}
                         setState={setName} />
                     <Input
                         type={"email"}
                         label={"Email address"}
-                        bId={"floatingEmail"}
+                        bootstrapId={"floatingEmail"}
                         state={email}
                         setState={setEmail} />
                     <Input
                         type={"password"}
                         label={"Password"}
-                        bId={"floatingPassword"}
+                        bootstrapId={"floatingPassword"}
                         state={password}
                         setState={setPassword} />
                     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>

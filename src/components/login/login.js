@@ -14,13 +14,13 @@ const Login = () => {
                     <Input
                         type={"email"}
                         label={"Email address"}
-                        bId={"floatingEmail"}
+                        bootstrapId={"floatingEmail"}
                         state={email}
                         setState={setEmail} />
                     <Input
                         type={"password"}
                         label={"Password"}
-                        bId={"floatingPassword"}
+                        bootstrapId={"floatingPassword"}
                         state={password}
                         setState={setPassword} />
                     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
