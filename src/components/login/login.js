@@ -1,10 +1,23 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Input } from '../../Ui';
 import { icon } from '../constanst';
-
+import {loginUserStart} from '../../slice/auth'
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const dispatch = useDispatch();
+    const { isLoading } = useSelector((state) => state.auth);
+
+
+    console.log(isLoading);
+
+    const loginHandler = (e) => {
+        e.preventDefault()
+        dispatch(loginUserStart())
+    }
+
     return (
         <div className="text-center mt-5">
             <main className="form-signin w-25 m-auto">
@@ -23,8 +36,14 @@ const Login = () => {
                         bootstrapId={"floatingPassword"}
                         state={password}
                         setState={setPassword} />
-                    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                    <p className="mt-5 mb-3 text-muted">©2022-2023</p>
+                    <button
+                        className="w-100 btn btn-lg btn-primary"
+                        type="submit"
+                        disabled={isLoading}
+                        onClick={loginHandler}
+                    >
+                        {isLoading ? 'loading...' : 'Login'}
+                    </button>
                 </form>
             </main>
         </div>
