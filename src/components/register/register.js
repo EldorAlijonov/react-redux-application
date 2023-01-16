@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Input } from '../../Ui';
 import { icon } from '../constanst'
-import {registerUserStart} from '../../slice/auth'
+import { signUserFailure, signUserStart, signUserSuccess } from '../../slice/auth'
+import AuthServices from '../../services/auth';
 const Register = () => {
 
     const [name, setName] = useState('');
@@ -13,13 +14,20 @@ const Register = () => {
     const { isLoading } = useSelector((state) => state.auth);
 
 
-    console.log(isLoading);
-
-    const registerHandler = (e) => {
+    const registerHandler = async (e) => {
         e.preventDefault()
-        dispatch(registerUserStart())
-    }
+        dispatch(signUserStart());
 
+        const user = { username: name, email, password }
+        try {
+            const response = await AuthServices.userRegister(user);
+            dispatch(signUserSuccess(response.user));
+        } catch (error) {
+            console.log(error.response.data);
+            dispatch(signUserFailure(error.response.data.errors));
+        }
+    }
+F
     return (
         <div className="text-center mt-5">
             <main className="form-signin w-25 m-auto">
