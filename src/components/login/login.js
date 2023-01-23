@@ -4,6 +4,7 @@ import { Input } from '../../Ui';
 import { icon } from '../constanst';
 import { signUserFailure, signUserStart, signUserSuccess } from '../../slice/auth'
 import AuthServices from '../../services/auth';
+import {ValidationError} from '../';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,6 +33,7 @@ const Login = () => {
                 <form>
                     <img className="mb-2" src={icon} alt="" width="72" height="60" />
                     <h1 className="h3 mb-3 fw-normal">Please login</h1>
+                    <ValidationError />
                     <Input
                         type={"email"}
                         label={"Email address"}

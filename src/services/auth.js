@@ -2,15 +2,16 @@ import axios from "./api"
 
 const AuthServices = {
     async userRegister(user) {
-        const { data } = await axios.post("/users", { user });
-        return data;
+        const { data } = await axios.post('/users', { user })
+        return data
     },
     async userLogin(user) {
-        const { data } = await axios.post("/users/login",{user});
-        return data;
+        const { data } = await axios.post('/users/login', { user })
+        return data
     },
-    async getUser() {
-        // const {data}=await axios.post("/user");
-    },
+    // async getUser() {
+    //     const { data } = await axios.get('/user')
+    //     return data
+    // },
 }
 export default AuthServices;
